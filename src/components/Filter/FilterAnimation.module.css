@@ -1,0 +1,14 @@
+.enter {
+ transform: scale(0.1);
+}
+.enterActive {
+ transform: scale(1);
+ transition: all 300ms linear;
+}
+.exit {
+ transform: scale(1);
+}
+.exitActive {
+ transform: scale(0.1);
+ transition: all 300ms linear;
+}
