@@ -1,13 +1,28 @@
-import { v4 as uuidv4 } from "uuid";
-import { ADD_ITEMS, DEL_ITEMS, FILTER, ITEMS_LOCAL_STOR } from "./appTypes";
 import { createAction } from "@reduxjs/toolkit";
 
-const addItemsFromLocalStor = createAction(ITEMS_LOCAL_STOR);
+const addContactRequest = createAction("contact/addRequest");
+const addContactSuccess = createAction("contact/addSuccess");
+const addContactError = createAction("contact/addError");
 
-const itemsAdd = createAction(ADD_ITEMS, (name, number) => ({ payload: { items: { id: uuidv4(), name, number } } }));
+const getContactsRequest = createAction("contact/getRequest");
+const getContactsSuccess = createAction("contacts/getSuccess");
+const getContactsError = createAction("contacts/getError");
 
-const itemsDel = createAction(DEL_ITEMS);
+const delContactRequest = createAction("contact/delRequest");
+const delContactSuccess = createAction("contact/delSuccess");
+const delContactError = createAction("contact/delError");
 
-const filter = createAction(FILTER);
+const filter = createAction("app/filter");
 
-export default { filter, itemsAdd, itemsDel, addItemsFromLocalStor };
+export default {
+ addContactRequest,
+ addContactSuccess,
+ addContactError,
+ getContactsRequest,
+ getContactsSuccess,
+ getContactsError,
+ delContactRequest,
+ delContactSuccess,
+ delContactError,
+ filter
+};

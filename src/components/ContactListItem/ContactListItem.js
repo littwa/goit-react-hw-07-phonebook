@@ -2,32 +2,30 @@ import React from "react";
 import { btn, itemLi, itemP, itemSpan } from "./ContactListItem.module.css";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import appAction from "../../redux/app/appAction";
+import appOperation from "../../redux/app/appOperation";
 
-let ContactListItem = ({ el, onDelItem, id }) => (
-  <li className={itemLi}>
-    <span className={itemP}>{el.name}:</span>
-    <p>
-      <span className={itemSpan}>{el.number}</span>
-      <button
-        className={btn}
-        onClick={() => {
-          onDelItem(id);
-        }}
-      >
-        &#10006;
-      </button>
-    </p>
-  </li>
+let ContactListItem = ({ el, onDelContact, id }) => (
+ <li className={itemLi}>
+  <span className={itemP}>{el.name}:</span>
+  <p>
+   <span className={itemSpan}>{el.number}</span>
+   <button
+    className={btn}
+    onClick={() => {
+     onDelContact(id);
+    }}
+   >
+    &#10006;
+   </button>
+  </p>
+ </li>
 );
 
-const mapStateToProps = (state) => ({ app: state.app });
+const mapDispatchToProps = { onDelContact: appOperation.delContact };
 
-const mapDispatchToProps = { onDelItem: appAction.itemsDel };
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactListItem);
+export default connect(null, mapDispatchToProps)(ContactListItem);
 
 ContactListItem.propTypes = {
-  el: PropTypes.object.isRequired,
-  onDelItem: PropTypes.func.isRequired,
+ el: PropTypes.object.isRequired,
+ onDelContact: PropTypes.func.isRequired
 };
